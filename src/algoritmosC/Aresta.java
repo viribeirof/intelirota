@@ -1,5 +1,5 @@
 package algoritmosC;
-
+//essa classe é usada por kruskal
 public class Aresta implements Comparable<Aresta> {
     private int origem;
     private int destino;

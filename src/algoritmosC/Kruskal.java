@@ -1,7 +1,7 @@
 package algoritmosC;
 
 import java.util.*;
-
+//aqui faz o algoritmo
 public class Kruskal {
     public ResultadoKruskal encontraAGM(Grafo grafo){
         List<Aresta> arestasOrdenadas = new ArrayList<>(grafo.getArestas());

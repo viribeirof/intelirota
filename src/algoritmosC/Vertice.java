@@ -1,5 +1,5 @@
 package algoritmosC;
-
+//se nao me engano, essa classe só é usada pelo A*, então pode ser descartada pra krukal
 public class Vertice implements Comparable<Vertice>{
     private int indiceCidade;
     private int custoReal;

@@ -1,7 +1,7 @@
 package algoritmosC;
 
 import java.util.*;
-
+//pode ser descartada
 public class AEstrela {
     public ResultadoAEstrela encontrarCaminho(Grafo grafo, String cidadeOrigem, String cidadeDestino){
         int origem = grafo.getIndiceCidade(cidadeOrigem);
@@ -9,15 +9,16 @@ public class AEstrela {
 
         int n = grafo.getNumeroDeVertices();
 
-        int[] gScore = new int[n];
+        int[] custoAcumulado = new int[n];
         int[] anterior = new int[n];
-        boolean[] fechado = new boolean[n];
+        boolean[] noVisitado = new boolean[n];
 
-        Arrays.fill(gScore, Integer.MAX_VALUE);
+        Arrays.fill(custoAcumulado, Integer.MAX_VALUE);
         Arrays.fill(anterior, -1);
 
-        gScore[origem] = 0;
+        custoAcumulado[origem] = 0;
 
+        //pega o menor custo
         PriorityQueue<Vertice> abertos = new PriorityQueue<>();
         abertos.add(new Vertice(origem, 0, heuristica(grafo, origem, destino)));
 
@@ -25,32 +26,32 @@ public class AEstrela {
             Vertice atual = abertos.poll();
             int cidadeAtual = atual.getIndiceCidade();
 
-            if(fechado[cidadeAtual]){
+            if(noVisitado[cidadeAtual]){
                 continue;
             }
 
-            fechado[cidadeAtual] = true;
+            noVisitado[cidadeAtual] = true;
 
             if(cidadeAtual == destino){
                 List<Integer> caminho = reconstruirCaminho(anterior, destino);
-                return new ResultadoAEstrela(caminho, gScore[destino]);
+                return new ResultadoAEstrela(caminho, custoAcumulado[destino]);
             }
 
             for (Aresta aresta : grafo.getAdjacencias(cidadeAtual)){
                 int vizinho = aresta.getDestino();
 
-                if(fechado[vizinho]){
+                if(noVisitado[vizinho]){
                     continue;
                 }
 
-                if (gScore[cidadeAtual] == Integer.MAX_VALUE){
+                if (custoAcumulado[cidadeAtual] == Integer.MAX_VALUE){
                     continue;
                 }
 
-                int tentativaG = gScore[cidadeAtual] + aresta.getPeso();
+                int tentativaG = custoAcumulado[cidadeAtual] + aresta.getPeso();
 
-                if(tentativaG < gScore[vizinho]){
-                    gScore[vizinho] = tentativaG;
+                if(tentativaG < custoAcumulado[vizinho]){
+                    custoAcumulado[vizinho] = tentativaG;
                     anterior[vizinho] = cidadeAtual;
 
                     int h = heuristica(grafo, vizinho, destino);

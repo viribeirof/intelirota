@@ -1,7 +1,7 @@
 package algoritmosC;
 
 import java.util.*;
-
+//essa classe é importante tmb
 public class ResultadoKruskal {
     private List<Aresta> arestasDaAGM;
     private int pesoTotal;

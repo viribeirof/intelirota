@@ -1,5 +1,5 @@
 package algoritmosC;
-
+//essa clase é importante pra kruskal
 public class ConjuntoDisjunto {
     private int[] pai;
     private int[] rank;

@@ -1,7 +1,7 @@
 package algoritmosC;
 
 import java.util.*;
-
+//essa classe monta o grafo, entao tmb é importante pra kruskal
 public class Grafo {
     private List<Aresta> arestas;
     private Map<String, Integer> cidadeParaIndice;

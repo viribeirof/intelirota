@@ -1,5 +1,5 @@
 package algoritmosC;
-
+//aqui um exemplo de tudo funcionando junto
 public class Main {
     static void main() {
         Grafo grafo = new Grafo();

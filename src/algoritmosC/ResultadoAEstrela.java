@@ -1,7 +1,7 @@
 package algoritmosC;
 
 import java.util.*;
-
+//pode ser descartada
 public class ResultadoAEstrela {
     private List<Integer> caminho;
     private int custoTotal;
