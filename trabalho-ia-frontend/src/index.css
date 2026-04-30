@@ -1,8 +1,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #212529; /* Mesma cor do bg-dark do Bootstrap */
-  overflow-x: hidden; /* Evita que crie uma barra de rolagem horizontal */
+  background-color: #212529; 
+  overflow-x: hidden; 
 }
 
 #root {
