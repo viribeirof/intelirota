@@ -53,7 +53,7 @@ const nodeStyle = {
   color: "#fff",
   border: "1px solid #6c757d",
   borderRadius: "5px",
-  padding: "5px 8px", 
+  padding: "5px 8px",
   fontSize: "12px",
 };
 
@@ -92,7 +92,7 @@ const rawNodes = [
   { id: "Porto Alegre", x: 450, y: 780, label: "Porto Alegre" },
 ];
 
-const scale = 1.35; 
+const scale = 1.35;
 const initialNodes = rawNodes.map(n => ({
   id: n.id,
   position: { x: n.x * scale, y: n.y * scale },
@@ -231,7 +231,7 @@ export default function InsercaoRota() {
   function animarCaminho(rotaRecebida) {
     if (!rotaRecebida || rotaRecebida.length < 2) return;
 
-    setNodes(initialNodes); 
+    setNodes(initialNodes);
 
     setEdges([]);
     let arestasAparecendo = [];
@@ -241,7 +241,7 @@ export default function InsercaoRota() {
       const origemTrecho = limparModoTransporte(rotaRecebida[i]);
       const destinoTrecho = limparModoTransporte(rotaRecebida[i + 1]);
       const isFerrovia = rotaRecebida[i + 1].toUpperCase().includes("FERROVIA");
-      
+
       passos.push({
         source: formatarId(origemTrecho),
         target: formatarId(destinoTrecho),
@@ -252,6 +252,28 @@ export default function InsercaoRota() {
       });
     }
 
+    const estiloNodoAtivo = {
+      background: '#212529',
+      color: '#0dcaf0',
+      border: '2px solid #0dcaf0',
+      borderRadius: '8px',
+      fontSize: '12px',
+      padding: '10px',
+      boxShadow: '0 0 15px rgba(13, 202, 240, 0.6)',
+      transition: 'all 0.3s ease',
+    };
+
+    if (passos.length > 0) {
+      setNodes((nds) =>
+        nds.map((node) => {
+          if (node.id === passos[0].source) {
+            return { ...node, style: estiloNodoAtivo };
+          }
+          return node;
+        })
+      );
+    }
+
     let passo = 0;
     const intervalo = setInterval(() => {
       if (passo >= passos.length) {
@@ -259,7 +281,17 @@ export default function InsercaoRota() {
         return;
       }
       const passoAtual = passos[passo];
-      const corDaLinha = passoAtual.isFerrovia ? "#198754" : "#0dcaf0"; 
+      const corDaLinha = passoAtual.isFerrovia ? "#198754" : "#0dcaf0";
+      const estiloNodoAtivo = {
+        background: '#212529',
+      color: corDaLinha,
+      border: `2px solid ${corDaLinha}`,
+      borderRadius: '8px',
+      fontSize: '12px',
+      padding: '10px',
+      boxShadow: '0 0 15px rgba(13, 202, 240, 0.6)',
+      transition: 'all 0.3s ease',
+      };
 
       const novaAresta = {
         id: `e-rota-${passo}`,
@@ -277,9 +309,17 @@ export default function InsercaoRota() {
 
       arestasAparecendo = [...arestasAparecendo, novaAresta];
       setEdges(arestasAparecendo);
-      
+
+      setNodes((nds) =>
+        nds.map((node) => {
+          if (node.id === passoAtual.target) {
+            return { ...node, style: estiloNodoAtivo };
+          }
+          return node;
+        }))  
+
       passo++;
-    }, 500); 
+    }, 500);
   }
 
   async function handleBuscarKruskal() {
@@ -299,7 +339,7 @@ export default function InsercaoRota() {
         titulo: 'Malha Kruskal (MST)',
         custoObra: custoObra,
         qtdTrechos: malhaArray.length,
-        trechos: trechosFormatados 
+        trechos: trechosFormatados
       });
       desenharMalha(malhaArray);
     } catch (error) {
@@ -343,7 +383,6 @@ export default function InsercaoRota() {
 
   function desenharMalha(malhaRecebida) {
     if (!malhaRecebida) return;
-    setNodes(initialNodes); 
     const novasArestas = malhaRecebida.map((trecho, index) => {
       const nomeOrigem = trecho.origem || trecho.u;
       const nomeDestino = trecho.destino || trecho.v;
@@ -364,13 +403,14 @@ export default function InsercaoRota() {
       };
     });
 
+    setNodes(initialNodes);
     setEdges(novasArestas);
   }
 
   return (
     <div className="container-fluid p-0 bg-dark text-light" style={{ minHeight: "100vh", width: "100vw", position: "absolute", top: 0, left: 0, overflowX: "hidden" }}>
       <div className="row g-0 h-100">
-        
+
         <div className="col-md-4 p-5 border-end border-secondary d-flex flex-column" style={{ overflowY: 'auto', maxHeight: '100vh' }}>
           <div className="d-flex justify-content-between align-items-center">
             <h2 className="m-0 fw-bold text-info cursor-pointer" onClick={() => navigate("/telaRecepcao")} style={{ cursor: "pointer" }}>INTELLIROTA</h2>
@@ -378,9 +418,9 @@ export default function InsercaoRota() {
           </div>
 
           <div className="mt-4 flex-grow-1">
-            
+
             <h6 className="text-secondary fw-bold mb-3 border-bottom border-secondary pb-2">BUSCA DE ROTA (A*)</h6>
-            
+
             <div className="mb-3">
               <label htmlFor="cidadeSaida" className="form-label fw-semibold text-secondary" style={{ fontSize: '0.85rem' }}>SAÍDA:</label>
               <select id="cidadeSaida" className="form-select bg-dark text-light border-secondary" value={origem} onChange={(e) => setOrigem(e.target.value)}>
@@ -426,7 +466,7 @@ export default function InsercaoRota() {
               <div className="card text-bg-dark border-secondary mt-4 shadow">
                 <div className="card-body">
                   <h5 className="card-title text-info border-bottom border-secondary pb-2">{resultado.titulo}</h5>
-                  
+
                   {resultado.tipo === 'rota' && (
                     <>
                       <p className="mb-2"><strong>Caminho:</strong></p>
@@ -442,7 +482,7 @@ export default function InsercaoRota() {
                       <p className="mb-2"><strong>Custo Total da Obra:</strong></p>
                       <h4 className="text-success">{formatarMoeda(resultado.custoObra)}</h4>
                       <p className="mb-2 mt-3"><strong>Trechos Construídos ({resultado.qtdTrechos}):</strong></p>
-                      
+
                       <div style={{ maxHeight: "150px", overflowY: "auto", fontSize: "0.85rem" }} className="bg-black bg-opacity-25 p-2 rounded border border-secondary">
                         <ul className="mb-0 ps-3 text-info" style={{ listStyleType: "circle" }}>
                           {resultado.trechos.map((t, i) => (
