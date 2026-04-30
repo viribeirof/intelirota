@@ -1,0 +1,52 @@
+Cidade_A,Cidade_B,Distancia_Km
+Porto Alegre,Florianópolis,463
+Florianópolis,Curitiba,307
+Curitiba,São Paulo,402
+Curitiba,Campo Grande,973
+São Paulo,Campo Grande,981
+São Paulo,Rio de Janeiro,435
+São Paulo,Belo Horizonte,592
+Campo Grande,Cuiabá,703
+Campo Grande,Belo Horizonte,1276
+Campo Grande,Goiânia,840
+Rio de Janeiro,Vitória,517
+Rio de Janeiro,Belo Horizonte,441
+Belo Horizonte,Vitória,514
+Belo Horizonte,Salvador,1429
+Belo Horizonte,Goiânia,891
+Belo Horizonte,Brasília,734
+Vitória,Salvador,1179
+Cuiabá,Goiânia,887
+Cuiabá,Manaus,2349
+Cuiabá,Porto Velho,1461
+Cuiabá,Belém,2629
+Cuiabá,Palmas,1500
+Goiânia,Brasília,824
+Goiânia,Palmas,852
+Goiânia,Salvador,1646
+Aracajú,Maceió,274
+Aracajú,Salvador,324
+Maceió,Recife,256
+Salvador,Recife,808
+Salvador,Teresina,1152
+Salvador,Palmas,1438
+Salvador,Maceió,580
+Porto Velho,Rio Branco,509
+Porto Velho,Manaus,889
+Rio Branco,Manaus,1395
+Manaus,Boa Vista,747
+Manaus,Belém,3048
+Palmas,Belém,1207
+Palmas,São Luís,1250
+Palmas,Teresina,1107
+Teresina,São Luís,433
+Teresina,Recife,1124
+Teresina,Fortaleza,604
+Recife,Fortaleza,777
+Recife,João Pessoa,116
+João Pessoa,Fortaleza,671
+João Pessoa,Natal,181
+Natal,Fortaleza,522
+Boa Vista,Belém,2804
+Belém,Macapá,528
+Belém,São Luís,576

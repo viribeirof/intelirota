@@ -1,0 +1,51 @@
+Origem,Destino,Cargas
+São Paulo,Rio de Janeiro,150
+Brasília,Goiânia,140
+Rio de Janeiro,Belo Horizonte,130
+São Paulo,Recife,120
+Manaus,São Paulo,110
+Fortaleza,São Paulo,100
+Porto Alegre,Brasília,90
+São Paulo,Salvador,90
+Rio de Janeiro,Salvador,85
+Belém,Manaus,80
+Belo Horizonte,Brasília,80
+Belém,Rio de Janeiro,75
+Florianópolis,Porto Alegre,75
+Recife,Salvador,75
+Curitiba,Natal,70
+Curitiba,Florianópolis,70
+Porto Alegre,Rio de Janeiro,70
+São Luís,Belém,65
+São Paulo,Florianópolis,65
+Salvador,Brasília,65
+Belo Horizonte,São Luís,60
+Natal,Fortaleza,60
+Cuiabá,Goiânia,60
+Cuiabá,Vitória,55
+Fortaleza,Teresina,55
+Vitória,Rio de Janeiro,55
+Campo Grande,Curitiba,55
+Brasília,Cuiabá,55
+Campo Grande,Recife,50
+Recife,João Pessoa,50
+Teresina,São Luís,50
+Manaus,Porto Velho,50
+Rio de Janeiro,Vitória,50
+Maceió,Recife,45
+João Pessoa,Natal,45
+Porto Velho,Cuiabá,45
+Teresina,Brasília,45
+Salvador,Aracaju,40
+Manaus,Boa Vista,40
+Palmas,Brasília,40
+João Pessoa,Salvador,40
+Aracaju,Maceió,35
+Porto Velho,Rio Branco,35
+Palmas,Belém,35
+Maceió,Belém,35
+Macapá,Aracaju,30
+Rio Branco,Boa Vista,30
+Belo Horizonte,Macapá,30
+Fortaleza,Rio de Janeiro,25
+São Paulo,Brasília,20
