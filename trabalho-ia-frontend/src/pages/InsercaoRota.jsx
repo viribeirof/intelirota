@@ -19,7 +19,7 @@ import {
 } from "../services/api";
 
 const capitais = [
-  { valor: "Aracaju", label: "Aracaju" },
+  { valor: "Aracajú", label: "Aracajú" },
   { valor: "Belém", label: "Belém" },
   { valor: "Belo Horizonte", label: "Belo Horizonte" },
   { valor: "Boa Vista", label: "Boa Vista" },
@@ -77,7 +77,7 @@ const rawNodes = [
   { id: "Joao Pessoa", x: 770, y: 210, label: "João Pessoa" },
   { id: "Recife", x: 770, y: 240, label: "Recife" },
   { id: "Maceio", x: 750, y: 270, label: "Maceió" },
-  { id: "Aracaju", x: 730, y: 300, label: "Aracaju" },
+  { id: "Aracajú", x: 730, y: 300, label: "Aracajú" },
   { id: "Salvador", x: 700, y: 350, label: "Salvador" },
   { id: "Cuiaba", x: 350, y: 400, label: "Cuiabá" },
   { id: "Brasilia", x: 500, y: 400, label: "Brasília" },
@@ -115,7 +115,7 @@ function criarAresta(origem, destino) {
 }
 
 const initialEdges = [
-  criarAresta("Aracaju", "Maceio"), criarAresta("Aracaju", "Salvador"),
+  criarAresta("Aracajú", "Maceio"), criarAresta("Aracajú", "Salvador"),
   criarAresta("Belem", "Sao Luis"), criarAresta("Belo Horizonte", "Salvador"),
   criarAresta("Belo Horizonte", "Goiania"), criarAresta("Belo Horizonte", "Brasilia"),
   criarAresta("Boa Vista", "Belem"), criarAresta("Brasilia", "Goiania"),
