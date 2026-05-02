@@ -88,11 +88,43 @@ O frontend foi desenvolvido com **React** e **Vite** e é responsável por:
 - Estruturas de dados para grafos
 - Arquivos CSV para armazenamento de dados
 
-## Utilizando o sistema
+## Rodando o backend
+
+O backend do projeto está localizado na pasta `trabalho-ia-backend`.
+
+### 1. Acessar a pasta do backend:
+
+Estando na raiz do projeto, execute:
+
+```bash
+cd trabalho-ia-backend
+```
+
+### 2. Instale as dependências:
+
+Para baixar todas as dependências e compilar o projeto, rode o seguinte comando:
+
+```bash
+mvn clean install
+```
+
+Mas caso queira apenas baixar as dependências, rode:
+
+```bash
+mvn dependency:resolve
+```
+
+### 3. Após a instalação, execute:
+
+```bash
+mvn spring-boot:run
+```
+
+# Rodando o frontend:
 
 O frontend do projeto está localizado na pasta `trabalho-ia-frontend`.
 
-1. Acessar a pasta do frontend:
+### 1. Acessar a pasta do frontend:
 
 Estando na raiz do projeto, execute:
 
@@ -100,7 +132,7 @@ Estando na raiz do projeto, execute:
 cd trabalho-ia-frontend
 ```
 
-2. Instale as dependências:
+### 2. Instale as dependências:
 
 Após acessar a pasta `trabalho-ia-frontend` execute o seguinte comando para instalar todas as dependências do projeto:
 
@@ -108,7 +140,7 @@ Após acessar a pasta `trabalho-ia-frontend` execute o seguinte comando para ins
 npm install .
 ```
 
-3. Após a instalação, execute:
+### 3. Após a instalação, execute:
 
 ```bash
 npm run dev
