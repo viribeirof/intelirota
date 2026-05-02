@@ -43,7 +43,7 @@ Também foi considerada uma exceção específica: Brasília possui conexão dir
 Utilizado para encontrar a rota de menor custo entre duas cidades. O algoritmo considera o custo real já percorrido e uma heurística de estimativa até o destino.
 
 ### Kruskal
-![Gif Kruskal](trabalho-ia-frontend/src/imgs/Kruskal.gif)
+![Gif Kruskal](trabalho-ia-frontend/src/imgs/Kruskall.gif)
 
 Utilizado para gerar uma Árvore Geradora Mínima, conectando todas as capitais com o menor custo possível de implantação da malha ferroviária.
 
