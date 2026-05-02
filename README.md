@@ -88,4 +88,29 @@ O frontend foi desenvolvido com **React** e **Vite** e é responsável por:
 - Estruturas de dados para grafos
 - Arquivos CSV para armazenamento de dados
 
-## Ainda não terminei, talvez eu altere.
+## Utilizando o sistema
+
+O frontend do projeto está localizado na pasta `trabalho-ia-frontend`.
+
+### 1. Acessar a pasta do frontend:
+
+Estando na raiz do projeto, execute:
+
+```bash
+cd trabalho-ia-frontend
+```
+
+### 2. Instale as dependências:
+
+```bash
+npm install .
+```
+
+Após a instalação, execute:
+
+```bash
+npm run dev
+```
+
+Logo após o servidor de desenvolvimento ficará disponível em:
+http://localhost:5173
