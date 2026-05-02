@@ -18,8 +18,9 @@ import {
   buscarMalhaGenetica
 } from "../services/api";
 
+//lista de capitais brasileiras para os selects de origem e destino
 const capitais = [
-  { valor: "Aracajú", label: "Aracajú" },
+  { valor: "Aracaju", label: "Aracaju" },
   { valor: "Belém", label: "Belém" },
   { valor: "Belo Horizonte", label: "Belo Horizonte" },
   { valor: "Boa Vista", label: "Boa Vista" },
@@ -62,6 +63,7 @@ const edgeStyle = {
   strokeWidth: 2,
 };
 
+//definição dos nós e arestas iniciais do grafo, representando as capitais brasileiras e suas conexões rodoviárias, com posições pré-definidas para melhor visualização no React Flow
 const rawNodes = [
   { id: "Boa Vista", x: 250, y: 50, label: "Boa Vista" },
   { id: "Macapa", x: 450, y: 50, label: "Macapá" },
@@ -77,7 +79,7 @@ const rawNodes = [
   { id: "Joao Pessoa", x: 770, y: 210, label: "João Pessoa" },
   { id: "Recife", x: 770, y: 240, label: "Recife" },
   { id: "Maceio", x: 750, y: 270, label: "Maceió" },
-  { id: "Aracajú", x: 730, y: 300, label: "Aracajú" },
+  { id: "Aracaju", x: 730, y: 300, label: "Aracaju" },
   { id: "Salvador", x: 700, y: 350, label: "Salvador" },
   { id: "Cuiaba", x: 350, y: 400, label: "Cuiabá" },
   { id: "Brasilia", x: 500, y: 400, label: "Brasília" },
@@ -100,10 +102,12 @@ const initialNodes = rawNodes.map(n => ({
   style: nodeStyle
 }));
 
+//função para criar um ID único para cada aresta com base na origem e destino, garantindo que as conexões entre os nós sejam identificáveis e consistentes, facilitando a manipulação das arestas no React Flow
 function criarIdAresta(origem, destino) {
   return `e-${origem}-${destino}`;
 }
 
+//função para criar uma aresta entre dois nós, utilizando a função criarIdAresta para gerar um ID único, e definindo o estilo da aresta, além de permitir a animação da conexão quando necessário, facilitando a visualização das rotas no React Flow
 function criarAresta(origem, destino) {
   return {
     id: criarIdAresta(origem, destino),
@@ -114,8 +118,9 @@ function criarAresta(origem, destino) {
   };
 }
 
+//definição das arestas iniciais do grafo, representando as conexões rodoviárias entre as capitais brasileiras, utilizando a função criarAresta para garantir consistência na criação das arestas e facilitar a manipulação posterior no React Flow
 const initialEdges = [
-  criarAresta("Aracajú", "Maceio"), criarAresta("Aracajú", "Salvador"),
+  criarAresta("Aracaju", "Maceio"), criarAresta("Aracaju", "Salvador"),
   criarAresta("Belem", "Sao Luis"), criarAresta("Belo Horizonte", "Salvador"),
   criarAresta("Belo Horizonte", "Goiania"), criarAresta("Belo Horizonte", "Brasilia"),
   criarAresta("Boa Vista", "Belem"), criarAresta("Brasilia", "Goiania"),
@@ -143,15 +148,18 @@ const initialEdges = [
   criarAresta("Vitoria", "Belo Horizonte")
 ];
 
+//função para formatar o ID dos nós, removendo acentos e caracteres especiais, garantindo que os IDs sejam consistentes e compatíveis com as regras de nomenclatura do React Flow, facilitando a manipulação dos nós no grafo
 function formatarId(nome) {
   if (!nome) return "";
   return nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+//função para limpar o modo de transporte dos nomes das cidades, removendo informações entre parênteses e espaços extras, garantindo que os nomes sejam padronizados e fáceis de ler, facilitando a visualização das rotas no resultado final
 function limparModoTransporte(cidade) {
   return cidade.replace(/\s*\(.*?\)\s*/g, "").trim();
 }
 
+//função para formatar um valor numérico como moeda brasileira (BRL), utilizando a função toLocaleString para garantir que o formato seja adequado para o público brasileiro, facilitando a compreensão dos custos apresentados nos resultados
 function formatarMoeda(valor) {
   return Number(valor).toLocaleString("pt-BR", {
     style: "currency",
@@ -159,6 +167,7 @@ function formatarMoeda(valor) {
   });
 }
 
+//componente principal da página de inserção de rota, onde o usuário pode selecionar a cidade de origem, destino e o tipo de rota (rodoviária ou híbrida), além de visualizar o grafo das capitais brasileiras e as rotas calculadas, utilizando o React Flow para a visualização do grafo e interatividade com os nós e arestas
 export default function InsercaoRota() {
   const navigate = useNavigate();
 
@@ -173,11 +182,13 @@ export default function InsercaoRota() {
   const [resultado, setResultado] = React.useState(null);
   const [erro, setErro] = React.useState("");
 
+  //função para resetar o mapa, restaurando os nós e arestas iniciais, permitindo que o usuário limpe as rotas calculadas e visualize novamente o grafo original das capitais brasileiras
   const resetarMapa = () => {
     setNodes(initialNodes);
     setEdges(initialEdges);
   };
 
+  //função para lidar com o clique nas arestas, alternando a exibição do rótulo da aresta entre oculto e visível, permitindo que o usuário veja informações adicionais sobre a conexão entre os nós ao clicar na aresta correspondente
   const onEdgeClick = (event, clickedEdge) => {
     setEdges((eds) =>
       eds.map((edge) => {
@@ -193,6 +204,7 @@ export default function InsercaoRota() {
     );
   };
 
+  //função para calcular a rota entre a cidade de origem e destino selecionadas, utilizando o tipo de rota escolhido (rodoviária ou híbrida), e atualizando o estado com o resultado da rota encontrada, além de animar o caminho no grafo utilizando a função animarCaminho, permitindo que o usuário visualize a rota calculada de forma interativa no React Flow
   async function calcularRota() {
     if (!origem || !destino) {
       setErro("Selecione a cidade de saída e a cidade de destino.");
@@ -207,6 +219,7 @@ export default function InsercaoRota() {
     setErro("");
     setResultado(null);
 
+    //chama a função de cálculo de rota correspondente ao tipo de rota selecionado, e atualiza o estado com o resultado da rota encontrada, além de animar o caminho no grafo utilizando a função animarCaminho, permitindo que o usuário visualize a rota calculada de forma interativa no React Flow
     try {
       let dados;
       if (tipoRota === "rodoviaria") {
@@ -228,6 +241,7 @@ export default function InsercaoRota() {
     }
   }
 
+  //função para animar o caminho da rota encontrada no grafo, criando arestas animadas entre os nós correspondentes à rota, e destacando os nós envolvidos na rota com um estilo diferenciado, permitindo que o usuário visualize a rota calculada de forma interativa no React Flow
   function animarCaminho(rotaRecebida) {
     if (!rotaRecebida || rotaRecebida.length < 2) return;
 
@@ -237,6 +251,7 @@ export default function InsercaoRota() {
     let arestasAparecendo = [];
     const passos = [];
 
+    //percorre a rota recebida, criando os passos para animação das arestas e destacando os nós envolvidos na rota, além de identificar o modo de transporte (rodovia ou ferrovia) para cada trecho da rota, permitindo que o usuário visualize a rota calculada de forma interativa no React Flow
     for (let i = 0; i < rotaRecebida.length - 1; i++) {
       const origemTrecho = limparModoTransporte(rotaRecebida[i]);
       const destinoTrecho = limparModoTransporte(rotaRecebida[i + 1]);
@@ -263,6 +278,7 @@ export default function InsercaoRota() {
       transition: 'all 0.3s ease',
     };
 
+    //destaca o nó de origem da rota com um estilo diferenciado, permitindo que o usuário visualize o ponto de partida da rota calculada de forma clara no React Flow
     if (passos.length > 0) {
       setNodes((nds) =>
         nds.map((node) => {
@@ -275,6 +291,7 @@ export default function InsercaoRota() {
     }
 
     let passo = 0;
+    //utiliza um intervalo para animar a aparição das arestas da rota no grafo, criando uma nova aresta a cada meio segundo e destacando os nós envolvidos na rota, permitindo que o usuário visualize a construção da rota de forma interativa no React Flow
     const intervalo = setInterval(() => {
       if (passo >= passos.length) {
         clearInterval(intervalo);
@@ -322,6 +339,7 @@ export default function InsercaoRota() {
     }, 500);
   }
 
+  //função para buscar a malha de ferrovias gerada pelo algoritmo de Kruskal, atualizando o estado com o resultado da malha encontrada, além de desenhar a malha no grafo utilizando a função desenharMalha, permitindo que o usuário visualize a malha gerada de forma interativa no React Flow
   async function handleBuscarKruskal() {
     setEstaCalculando(true);
     setErro("");
@@ -349,6 +367,7 @@ export default function InsercaoRota() {
     }
   }
 
+  //função para buscar a malha de ferrovias gerada pelo algoritmo genético, atualizando o estado com o resultado da malha encontrada, além de desenhar a malha no grafo utilizando a função desenharMalha, permitindo que o usuário visualize a malha gerada de forma interativa no React Flow, e tratando o caso de construção inviável quando a malha retornada for vazia ou nula
   async function handleBuscarGenetico() {
     setEstaCalculando(true);
     setErro("");
@@ -381,6 +400,7 @@ export default function InsercaoRota() {
     }
   }
 
+  //função para desenhar a malha de ferrovias no grafo, criando novas arestas para cada trecho da malha recebida, e atualizando o estado dos nós e arestas para refletir a nova malha, permitindo que o usuário visualize a malha gerada de forma interativa no React Flow
   function desenharMalha(malhaRecebida) {
     if (!malhaRecebida) return;
     const novasArestas = malhaRecebida.map((trecho, index) => {
@@ -407,6 +427,7 @@ export default function InsercaoRota() {
     setEdges(novasArestas);
   }
 
+  //renderização do componente, incluindo o layout da página, os formulários para seleção de origem, destino e tipo de rota, os botões para calcular a rota e buscar as malhas de ferrovias, e a exibição dos resultados e do grafo utilizando o React Flow, permitindo que o usuário interaja com a aplicação de forma intuitiva e visualize as rotas e malhas geradas de forma clara e interativa
   return (
     <div className="container-fluid p-0 bg-dark text-light" style={{ minHeight: "100vh", width: "100vw", position: "absolute", top: 0, left: 0, overflowX: "hidden" }}>
       <div className="row g-0 h-100">

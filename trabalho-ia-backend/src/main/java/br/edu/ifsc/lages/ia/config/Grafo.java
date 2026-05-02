@@ -37,6 +37,7 @@ public class Grafo {
         }
     }
 
+    //metodo para adicionar uma aresta ao grafo, criando a lista de conexões se a cidade ainda não tiver conexões
     private void adicionarAresta(String origem, String destino, double distancia) {
         grafoReal.computeIfAbsent(origem, k -> new ArrayList<>())
                  .add(new Conexao(destino, distancia));
