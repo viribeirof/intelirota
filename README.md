@@ -1,4 +1,4 @@
-# Intelirota
+# Intelirota ![Logo](trabalho-ia-frontend/src/imgs/IntellirotaLogo.png)
 
 Sistema web para análise e otimização do traporte de cargas entre capitais brasileiras, utilizando algortimos de Inteligência Artificial aplicados a grafos.
 
