@@ -86,9 +86,17 @@ O frontend foi desenvolvido com **React** e **Vite** e é responsável por:
 - Vite
 - JavaScript
 - Estruturas de dados para grafos
-- Arquivos CSV para armazenamento de dados
+- Arquivos CSV para armazenamento de dados]
 
-## Rodando o backend
+# Utilizando o sistema:
+
+Para utilizar o sistema, primeiro abra o terminal em uma pasta do seu computador que queira armazenar os arquivos, logo após abra um terminal na pasta e execute o seguinte comando para clonar o repositório:
+
+```bash
+git clone https://github.com/viribeirof/intelirota.git
+```
+
+# Rodando o backend
 
 O backend do projeto está localizado na pasta `trabalho-ia-backend`.
 
