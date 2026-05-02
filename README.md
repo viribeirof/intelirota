@@ -38,7 +38,7 @@ Também foi considerada uma exceção específica: Brasília possui conexão dir
 ## Algoritmos utilizados
 
 ### A*
-(adicionar gif)
+![Texto alternativo](intelirota/trabalho-ia-frontend/src/imgs/AEstrela.gif)
 
 Utilizado para encontrar a rota de menor custo entre duas cidades. O algoritmo considera o custo real já percorrido e uma heurística de estimativa até o destino.
 
