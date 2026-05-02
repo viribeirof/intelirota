@@ -92,7 +92,7 @@ O frontend foi desenvolvido com **React** e **Vite** e é responsável por:
 
 O frontend do projeto está localizado na pasta `trabalho-ia-frontend`.
 
-### 1. Acessar a pasta do frontend:
+1. Acessar a pasta do frontend:
 
 Estando na raiz do projeto, execute:
 
@@ -100,13 +100,15 @@ Estando na raiz do projeto, execute:
 cd trabalho-ia-frontend
 ```
 
-### 2. Instale as dependências:
+2. Instale as dependências:
+
+Após acessar a pasta `trabalho-ia-frontend` execute o seguinte comando para instalar todas as dependências do projeto:
 
 ```bash
 npm install .
 ```
 
-Após a instalação, execute:
+3. Após a instalação, execute:
 
 ```bash
 npm run dev
