@@ -1,5 +1,6 @@
 package br.edu.ifsc.lages.ia.model;
 
+//classe para representar a demanda de cargas entre cidades, com a quantidade de cargas como a demanda
 public class DemandaCarga {
 
     private String origem;

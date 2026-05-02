@@ -46,10 +46,12 @@ public class TabelaHeuristica{
         }
     }
 
+    //metodo para adicionar a distancia entre duas cidades na matriz heuristica, criando a linha da cidade de origem se ela ainda não existir
     private void adicionarDistancia(String origem, String destino, double distancia) {
         matrizHeuristica.computeIfAbsent(origem, k -> new HashMap<>()).put(destino, distancia);
     }
 
+    //metodo para obter a distancia heuristica entre duas cidades, retornando 0 se não houver uma distancia definida ou se as cidades forem iguais
     public double getDistanciaLinhaReta(String origem, String destino) {
         if (origem.equalsIgnoreCase(destino)) {
             return 0.0;

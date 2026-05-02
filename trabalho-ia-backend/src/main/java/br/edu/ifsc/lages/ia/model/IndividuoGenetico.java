@@ -1,5 +1,6 @@
 package br.edu.ifsc.lages.ia.model;
 
+//classe para representar um indivíduo na população do algoritmo genético, com os genes representando a presença ou ausência de ferrovias entre cidades, e a aptidão representando a qualidade da solução
 public class IndividuoGenetico implements Comparable<IndividuoGenetico> {
 
     private boolean[] genes;

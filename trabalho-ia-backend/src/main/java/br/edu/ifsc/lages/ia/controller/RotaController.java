@@ -39,6 +39,7 @@ public class RotaController {
         this.geneticoService = geneticoService;
     }
 
+    //endpoint para buscar a rota rodoviaria usando o algoritmo A*
     @GetMapping("/rota/rodoviaria")
     public ResponseEntity<ResultadoBusca> buscarRotaRodoviaria(
         @RequestParam String origem,
@@ -52,12 +53,14 @@ public class RotaController {
         return ResponseEntity.ok(resultado);
     }
 
+    //endpoint para gerar a ferrovia usando o algoritmo de Kruskal
     @GetMapping("/ferrovia/kruskal")
     public ResponseEntity<Map<String, Object>> gerarFerroviaKruskal() {
         Map<String, Object> resultado = kruskalService.gerarFerrovia(grafo.getGrafoReal());
         return ResponseEntity.ok(resultado);
     }
 
+    //endpoint para buscar a rota híbrida usando o algoritmo de Kruskal para gerar a ferrovia e o algoritmo A* para buscar a rota
     @GetMapping("/rota/hibrida/kruskal")
     public ResponseEntity<ResultadoBusca> buscarRotaHibridaKruskal(
             @RequestParam String origem,
@@ -76,6 +79,7 @@ public class RotaController {
         return ResponseEntity.ok(resultado);
     }
 
+    //endpoint para gerar a ferrovia usando o algoritmo genético, considerando um orçamento máximo de 60% do custo total da ferrovia gerada pelo algoritmo de Kruskal
     @GetMapping("/ferrovia/genetico")
     public ResponseEntity<Map<String, Object>> gerarFerroviaGenetico() {
         Map<String, Object> respostaKruskal = kruskalService.gerarFerrovia(grafo.getGrafoReal());
@@ -98,6 +102,7 @@ public class RotaController {
         return ResponseEntity.ok(resultado);
     }
 
+    //endpoint para buscar a rota híbrida usando o algoritmo genético para gerar a ferrovia e o algoritmo A* para buscar a rota
     @GetMapping("/rota/hibrida/genetico")
     public ResponseEntity<ResultadoBusca> buscarRotaHibridaGenetico(
             @RequestParam String origem,
@@ -123,6 +128,7 @@ public class RotaController {
         return ResponseEntity.ok(resultado);
     }
 
+    //endpoint para listar as cidades disponíveis no grafo
     @GetMapping("/cidades")
     public ResponseEntity<List<String>> listarCidades(){
         List<String> cidades = new ArrayList<>(grafo.getGrafoReal().keySet());
@@ -134,6 +140,7 @@ public class RotaController {
         List<ArestaFerrovia> arestas = new ArrayList<>();
         Set<String> visitadas = new HashSet<>();
 
+        //percorre o grafo real e extrai as conexões para criar as arestas candidatas, evitando duplicatas
         for (String origem : grafoReal.keySet()){
             for (Conexao conexao : grafoReal.get(origem)){
                 String destino = conexao.getDestino();
@@ -150,6 +157,7 @@ public class RotaController {
         return arestas;
     }
 
+    //converte as cargas para demandas, considerando a quantidade de cargas como a demanda
     private List<DemandaCarga> converterCargasParaDemandas(List<DemandaCarga> rotasCarga) {
         List<DemandaCarga> demandas = new ArrayList<>();
 
