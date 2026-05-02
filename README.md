@@ -43,12 +43,12 @@ Também foi considerada uma exceção específica: Brasília possui conexão dir
 Utilizado para encontrar a rota de menor custo entre duas cidades. O algoritmo considera o custo real já percorrido e uma heurística de estimativa até o destino.
 
 ### Kruskal
-(adicionar gif)
+![Gif Kruskal](trabalho-ia-frontend/src/imgs/Kruskal.gif)
 
 Utilizado para gerar uma Árvore Geradora Mínima, conectando todas as capitais com o menor custo possível de implantação da malha ferroviária.
 
 ### Algoritmo Genético
-(adicionar gif)
+![Gif Genetico](trabalho-ia-frontend/src/imgs/genetico.gif)
 
 Utilizado para otimizar a escolha dos trechos ferroviários a serem construídos, considerando:
 
