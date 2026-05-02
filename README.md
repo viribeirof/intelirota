@@ -90,7 +90,7 @@ O frontend foi desenvolvido com **React** e **Vite** e é responsável por:
 
 # Utilizando o sistema:
 
-Para utilizar o sistema, primeiro abra o terminal em uma pasta do seu computador que queira armazenar os arquivos, logo após abra um terminal na pasta e execute o seguinte comando para clonar o repositório:
+Para começar a utilizar o sistema, escolha uma pasta do seu computador onde o projeto será armazenado. Abra o terminal nessa pasta e execute o seguinte comando para clonar o repositório:
 
 ```bash
 git clone https://github.com/viribeirof/intelirota.git
@@ -100,7 +100,7 @@ git clone https://github.com/viribeirof/intelirota.git
 
 O backend do projeto está localizado na pasta `trabalho-ia-backend`.
 
-### 1. Acessar a pasta do backend:
+## 1. Acessar a pasta do backend:
 
 Estando na raiz do projeto, execute:
 
@@ -108,31 +108,37 @@ Estando na raiz do projeto, execute:
 cd trabalho-ia-backend
 ```
 
-### 2. Instale as dependências:
+## 2. Instale as dependências:
 
-Para baixar todas as dependências e compilar o projeto, rode o seguinte comando:
+Para baixar todas as dependências e compilar o projeto, execute:
 
 ```bash
 mvn clean install
 ```
 
-Mas caso queira apenas baixar as dependências, rode:
+Caso queira apenas baixar as dependências, execute:
 
 ```bash
 mvn dependency:resolve
 ```
 
-### 3. Após a instalação, execute:
+## 3. Executar o backend
+
+Após a instalação, execute:
 
 ```bash
 mvn spring-boot:run
 ```
 
+O backend ficará disponível, por padrão, em:
+http://localhost:8080
+
+
 # Rodando o frontend:
 
 O frontend do projeto está localizado na pasta `trabalho-ia-frontend`.
 
-### 1. Acessar a pasta do frontend:
+## 1. Acessar a pasta do frontend:
 
 Estando na raiz do projeto, execute:
 
@@ -140,19 +146,19 @@ Estando na raiz do projeto, execute:
 cd trabalho-ia-frontend
 ```
 
-### 2. Instale as dependências:
+## 2. Instale as dependências:
 
-Após acessar a pasta `trabalho-ia-frontend` execute o seguinte comando para instalar todas as dependências do projeto:
+Após acessar a pasta `trabalho-ia-frontend`, execute o seguinte comando para instalar todas as dependências do projeto:
 
 ```bash
-npm install .
+npm install
 ```
 
-### 3. Após a instalação, execute:
+## 3. Após a instalação, execute:
 
 ```bash
 npm run dev
 ```
 
-Logo após o servidor de desenvolvimento ficará disponível em:
+O servidor de desenvolvimento ficará disponível em:
 http://localhost:5173
